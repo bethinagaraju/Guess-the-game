@@ -1,0 +1,61 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Guess_the_number {
+
+    static class Game {
+        int number;
+        int inputNumber;
+        int noOfGuesses=0;
+
+
+         int getNoOfGuesses(int noOfGuesses) {
+            return noOfGuesses;
+        }
+
+         void setNoOfGuesses(int noOfGuesses) {
+            this.noOfGuesses = noOfGuesses;
+        }
+
+         Game() {
+            Random rand = new Random();
+            this.number = rand.nextInt(100);
+        }
+
+        void setInputNumber() {
+            System.out.println("GUESS THE NUMBER");
+            Scanner sc = new Scanner(System.in);
+            inputNumber = sc.nextInt();
+        }
+
+        void setInputNumber(int inputNumber) {
+            this.inputNumber = inputNumber;
+        }
+
+        public boolean isCorrectNumber() {
+            noOfGuesses++;
+            if (inputNumber == number) {
+                System.out.println("YOU WON THE GAME || NO OF GUESSES : " + noOfGuesses);
+                return true;
+            } else if (inputNumber > number) {
+                System.out.println("number is high");
+            } else if (inputNumber<number){
+                System.out.println("number is low");
+            }
+            return false;
+
+        }
+    }
+
+
+
+    public static void main(String[] args) {
+        Game g = new Game();
+        boolean b = false;
+        while (!b){
+            g.setInputNumber();
+            b=g.isCorrectNumber();
+        }
+    }
+
+}
